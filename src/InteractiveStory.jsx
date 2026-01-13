@@ -8,13 +8,11 @@ export default function InteractiveStory() {
   const [currentScene, setCurrentScene] = useState(START_SCENE);
   const [displayText, setDisplayText] = useState("");
 
-  // Load saved progress
   useEffect(() => {
     const saved = localStorage.getItem("storyScene");
     if (saved && storyData[saved]) setCurrentScene(saved);
   }, []);
 
-  // Save progress
   useEffect(() => {
     localStorage.setItem("storyScene", currentScene);
   }, [currentScene]);
@@ -22,7 +20,6 @@ export default function InteractiveStory() {
   const scene = storyData[currentScene];
   if (!scene) return <p>Scene not found.</p>;
 
-  // Typewriter effect for text
   useEffect(() => {
     let index = 0;
     setDisplayText("");
@@ -34,7 +31,6 @@ export default function InteractiveStory() {
     return () => clearInterval(interval);
   }, [currentScene]);
 
-  // Background music
   useEffect(() => {
     let sound;
     if (scene.music) {
