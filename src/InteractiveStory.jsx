@@ -50,7 +50,7 @@ export default function InteractiveStory() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "2rem" }}>
+    <div className="story-container">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentScene}
@@ -63,7 +63,11 @@ export default function InteractiveStory() {
             <img
               src={scene.image}
               alt=""
-              style={{ maxWidth: "80%", borderRadius: "8px", marginBottom: "1rem" }}
+              style={{
+                maxWidth: "80%",
+                borderRadius: "8px",
+                marginBottom: "1rem"
+              }}
             />
           )}
 
@@ -76,30 +80,16 @@ export default function InteractiveStory() {
               <button
                 key={index}
                 onClick={() => setCurrentScene(choice.next)}
-                style={{
-                  display: "block",
-                  margin: "0.5rem auto",
-                  padding: "0.6rem 1.2rem",
-                  fontSize: "1rem",
-                  cursor: "pointer"
-                }}
               >
                 {choice.text}
               </button>
             ))
           ) : (
             <>
-              <p style={{ fontStyle: "italic", marginBottom: "1rem" }}>The End</p>
-              <button
-                onClick={restartStory}
-                style={{
-                  padding: "0.6rem 1.2rem",
-                  fontSize: "1rem",
-                  cursor: "pointer"
-                }}
-              >
-                Restart Story
-              </button>
+              <p style={{ fontStyle: "italic", marginBottom: "1rem" }}>
+                The End
+              </p>
+              <button onClick={restartStory}>Restart Story</button>
             </>
           )}
         </motion.div>
